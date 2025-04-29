@@ -440,7 +440,12 @@ class PluginManager:
         object: The created learning rate scheduler, or None if none was found.
         """
         for plugin in self.plugins.values():
-            scheduler = plugin.create_lr_scheduler(cfg=cfg, trainer=trainer, optimizer=optimizer, num_training_steps=num_training_steps)
+            scheduler = plugin.create_lr_scheduler(
+                cfg=cfg,
+                trainer=trainer,
+                optimizer=optimizer,
+                num_training_steps=num_training_steps,
+            )
             if scheduler is not None:
                 return scheduler
         return None
